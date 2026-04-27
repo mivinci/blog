@@ -1,0 +1,122 @@
+baseURL: https://mivinci.github.io/blog/
+
+languageCode: en-us
+
+title: Leo X.
+
+copyright: © 2018-2026 Leo X.
+
+theme: minima
+
+defaultContentLanguage: zh-cn
+
+pagination:
+  pagerSize: 5
+
+params:
+  greet: 你好 :)
+
+  switch: ["🌚", "🌝"]
+  defaultTheme: system
+
+  displayDate: true
+  displayDescription: true
+  selectable: true
+
+  author:
+    name: Leo X.
+    status: Currently living on Earth 🌍
+    avatar: https://avatars.githubusercontent.com/u/33592375?v=4
+    description: |
+      👋 Hi there. I'm XJJ, aka 叉JJ, 小丽 or Leonard, a guy and also (going to be)
+      a T-shaped and independent software developer with a crazy strong sense of aesthetics
+      for everything and relentless drive to abstract away complexity. C89 is my favorite
+      C standard. Outside of programming, I enjoy theoretical physics, music and singing.
+      Minecraft is my all-time favorite video game. Live long and prosper 🖖
+
+  social:
+    - name: "github"
+      url: "https://github.com/mivinci"
+    - name: "email"
+      url: "mailto:mivinci@qq.com"
+    - name: "twitter"
+      url: "https://x.com/realmivnci"
+    - name: "bilibili"
+      url: "https://space.bilibili.com/223861386"
+    - name: "rss"
+      url: "index.xml"
+
+  math:
+    enable: true
+    provider: katex
+
+  diagram:
+    enable: true
+    provider: mermaid
+
+  comment:
+    enable: true
+    provider: giscus
+    giscus:
+      repo: mivinci/mivinci.github.io
+      repoId: MDEwOlJlcG9zaXRvcnkzODcxMjM2NDU=
+      category: Comments
+      categoryId: DIC_kwDOFxMJvc4CScQm
+      mapping: pathname
+      inputPosition: bottom
+      reactions: true
+      metadata: false
+
+  search:
+    enable: true
+    provider: fuse
+    title: 搜索
+    placeholder: 输入关键词
+
+    fuse:
+      keys:
+        - title
+        - permalink
+        - summary
+        - content
+      distance: 100
+      location: 0
+      threshold: 0.6
+      ignoreLocation: false
+      isCaseSensitive: false
+      includeScore: false
+      includeMatches: false
+      minMatchCharLength: 1
+      shouldSort: true
+      findAllMatches: false
+
+menu:
+  main:
+    - identifier: home
+      name: 首页
+      weight: 1
+    - identifier: tags
+      name: 标签
+      weight: 2
+    - identifier: series
+      name: 系列
+      weight: 3
+    - identifier: search
+      name: 🔍
+      weight: 4
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+markup:
+  highlight:
+    lineNos: true
+    noClasses: false

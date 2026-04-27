@@ -42,7 +42,7 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
-        run: hugo --gc --minify
+        run: hugo --gc --minify --buildFuture
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
