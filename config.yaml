@@ -1,4 +1,4 @@
-baseURL: https://le0.me/blog/
+baseURL: https://mivinci.github.io/blog/
 
 languageCode: zh-cn
 
@@ -44,7 +44,7 @@ params:
     - name: "bilibili"
       url: "https://space.bilibili.com/223861386"
     - name: "rss"
-      url: "/blog/index.xml"
+      url: "index.xml"
 
   math:
     enable: true
