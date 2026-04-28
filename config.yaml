@@ -55,10 +55,10 @@ params:
     enable: true
     provider: giscus
     giscus:
-      repo: mivinci/mivinci.github.io
-      repoId: MDEwOlJlcG9zaXRvcnkzODcxMjM2NDU=
-      category: Comments
-      categoryId: DIC_kwDOFxMJvc4CScQm
+      repo: mivinci/blog
+      repoId: R_kgDOSOGo-g
+      category: Announcements
+      categoryId: DIC_kwDOSOGo-s4C72C0
       mapping: pathname
       inputPosition: bottom
       reactions: true
