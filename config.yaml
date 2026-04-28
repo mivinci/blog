@@ -27,6 +27,10 @@ params:
     name: Leo X.
     status: Currently living on Earth 🌍
     avatar: https://avatars.githubusercontent.com/u/33592375?v=4
+    description: |
+      我站在无限递归的边缘，向镜中投去一瞥——镜中人也在投去。
+      中间隔着多少层镜像？我数不清。
+      但每一层，都以为自己才是真正的观察者。
   social:
     - name: "github"
       url: "https://github.com/mivinci"
