@@ -8,8 +8,6 @@ math: false
 diagram: true
 ---
 
-> 本文基于对 Claude Code 源码的深度分析，深入解析其核心引擎 QueryEngine 的设计哲学与实现细节。
-
 ## 一、整体架构概览
 
 Claude Code 是一个基于终端的 AI 编程助手，采用**管道模型**：

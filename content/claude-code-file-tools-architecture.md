@@ -1,14 +1,12 @@
 ---
 title: "Claude Code 架构解析：文件工具"
 date: 2026-04-01
-description: 从源码级别深入分析 Claude Code 文件读写工具的实现细节，涵盖权限校验的完整流程、Symlink 链追踪算法、文件读取双路径设计、编辑原子性保证、以及那些反直觉的设计决策。
+description: 基于 Claude Code 源码分析文件读写工具的实现细节，涵盖权限校验的完整流程、Symlink 链追踪算法、文件读取双路径设计、编辑原子性保证、以及那些反直觉的设计决策。
 tags: ["AI", "Claude", "架构", "安全"]
 draft: false
 math: false
 diagram: true
 ---
-
-> 本文基于 Claude Code 源码的逐行分析，揭示文件工具背后的设计决策与边界条件处理。
 
 ## 零、架构总览
 
