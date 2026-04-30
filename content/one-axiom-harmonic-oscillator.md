@@ -6,6 +6,7 @@ tags: ["物理", "数学", "哲学"]
 draft: false
 math: true
 diagram: true
+original: true
 ---
 
 ## 本源公理

@@ -6,6 +6,7 @@ tags: ["哲学", "物理", "宇宙论", "意识"]
 draft: false
 math: true
 diagram: false
+original: true
 ---
 
 > 该文章内容是我将想法告诉 AI 后 AI 写的，我的语文水平一辈子都写不出这些表达。
