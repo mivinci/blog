@@ -13,6 +13,8 @@ defaultContentLanguage: zh-cn
 pagination:
   pagerSize: 5
 
+buildFuture: true
+
 params:
   greet: 你好 :)
 
