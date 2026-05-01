@@ -1,4 +1,4 @@
-# Leo X.
+# Leo X
 
 Personal blog powered by [Hugo](https://gohugo.io) and [Minima](https://github.com/mivinci/hugo-theme-minima).
 
