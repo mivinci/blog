@@ -2,7 +2,7 @@
 title: "又折腾了下几年前写的 emoji 版 Pac-Man"
 date: 2026-05-02
 description: AI 还是太好用啦～
-tags: ["C", "终端", "Emoji"]
+tags: ["C", "终端", "Emoji", "Pac-Man"]
 draft: false
 math: false
 diagram: false
