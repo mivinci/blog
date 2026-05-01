@@ -12,7 +12,7 @@ diagram: false
 
 几年前有天突然想看看 `termios` 这个库，就是 Unix 下控制终端原始模式的那个。关掉回显、关掉行缓冲、直接读按键码，是做终端交互程序的起点。然后就花了一晚上搞出个 emoji 版的 Pac-Man，因为规则简单、地图小，但该有的一样不少：实时输入、碰撞检测、AI 寻路、状态管理、画面渲染。一个小游戏把 TUI 的核心操作都覆盖了。今晚一时起意让 AI（WorkBuddy with GLM5.1）继续完善了下，补了下当年留的坑。
 
-![pacman](shot.png)
+<img src="shot.png" alt="pacman" style="max-width: 480px; width: 100%;" />
 
 代码在 [GitHub](https://github.com/mivinci/pacman)，就一个 `pm.c`，`cc pm.c && ./a.out a.map` 即可开玩。
 
