@@ -94,7 +94,7 @@ Layer L: x_L = x_{L-1} + Attention(x_{L-1})
 
 深层网络 = 在语义流形上沿着被学到的联络走多步。
 
-![认知纤维丛几何结构](认知纤维丛几何结构.svg)
+![cognitive fiber bundle](fiber-bundle.svg)
 
 ---
 
