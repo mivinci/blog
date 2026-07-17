@@ -3,7 +3,7 @@ title: "类脑记忆复刻：AI Agent 的突破路径"
 date: 2026-04-15
 description: 从参数量的虚假优势到人脑的省内存密码，再到 AI Agent 的复刻路径——为什么下一代 AI 的方向是「类脑」而非「堆参」。
 tags: ["AI", "Agent", "记忆架构"]
-draft: false
+draft: true
 math: false
 diagram: true
 ---

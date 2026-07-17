@@ -3,7 +3,7 @@ title: "认知纤维丛与推理涌现"
 date: 2026-05-17
 description: 从几何视角理解大模型的推理能力
 tags: ["AI", "数学", "几何", "推理"]
-draft: false
+draft: true
 math: true
 diagram: false
 ---
