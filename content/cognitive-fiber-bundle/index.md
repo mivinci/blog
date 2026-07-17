@@ -42,8 +42,6 @@ Transformer 的 attention 机制恰好对应了这个几何结构。每个 token
 
 ---
 
-*写于 2026-05-17，基于与麦伯伯的讨论整理。2026-05-18 修订；2026-07-17 重写为一个连续论证。*
-
 **参考文献**
 
 1. Kolmogorov, A. N. (1956). *On the representation of continuous functions of several variables*. Doklady Akademii Nauk SSSR.
