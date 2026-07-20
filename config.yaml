@@ -118,6 +118,12 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    passthrough:
+      delimiters:
+        block:
+          - ["$$", "$$"]
+        inline:
+          - ["$", "$"]
   highlight:
     lineNos: true
     noClasses: false
