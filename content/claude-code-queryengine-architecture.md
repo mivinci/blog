@@ -494,7 +494,7 @@ const reactiveCompact = feature('REACTIVE_COMPACT')
   : null
 ```
 
-## 总结
+## 9. 总结
 
 Claude Code 的架构设计体现了几个核心原则：
 
