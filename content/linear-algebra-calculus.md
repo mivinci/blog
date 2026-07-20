@@ -98,20 +98,20 @@ $$df_p(v) = f'(p) \cdot v, \quad \forall v \in \mathbb{R}$$
 
 设 $f: \mathbb{R}^m \to \mathbb{R}^n$ 在点 $p$ 处可微。$df_p: \mathbb{R}^m \to \mathbb{R}^n$ 是一个 $m \to n$ 维的线性变换。根据线性代数基本定理，选取 $\mathbb{R}^m$ 的标准基 $\{\boldsymbol{e}_1,\dots,\boldsymbol{e}_m\}$ 和 $\mathbb{R}^n$ 的标准基后，这个线性变换有一个 $n \times m$ 的矩阵表示。矩阵的每一列，就是基向量 $\boldsymbol{e}_j$ 在 $df_p$ 下的像：
 
-$$df_p(\boldsymbol{e}_j) = \lim_{t \to 0} \frac{f(p + t\boldsymbol{e}_j) - f(p)}{t} = \begin{pmatrix}\frac{\partial f^1}{\partial x_j}(p) \\ \vdots \\ \frac{\partial f^n}{\partial x_j}(p)\end{pmatrix}$$
+$$df_p(\boldsymbol{e}_j) = \lim_{t \to 0} \frac{f(p + t\boldsymbol{e}_j) - f(p)}{t} = \begin{pmatrix}\frac{\partial f^1}{\partial x_j}(p) \\\\ \vdots \\\\ \frac{\partial f^n}{\partial x_j}(p)\end{pmatrix}$$
 
 这个矩阵就是雅可比矩阵：
 
 $$J_f(p) =
 \begin{pmatrix}
-\displaystyle\frac{\partial f^1}{\partial x_1} & \dots & \displaystyle\frac{\partial f^1}{\partial x_m} \\
-\vdots & & \vdots \\
+\displaystyle\frac{\partial f^1}{\partial x_1} & \dots & \displaystyle\frac{\partial f^1}{\partial x_m} \\\\
+\vdots & & \vdots \\\\
 \displaystyle\frac{\partial f^n}{\partial x_1} & \dots & \displaystyle\frac{\partial f^n}{\partial x_m}
 \end{pmatrix}$$
 
 对任意方向向量 $\boldsymbol{v} = (v_1,\dots,v_m)$，由线性性质：
 
-$$df_p(\boldsymbol{v}) = df_p\!\left(\sum_j v_j \boldsymbol{e}_j\right) = \sum_j v_j\,df_p(\boldsymbol{e}_j) = \sum_j v_j \begin{pmatrix}\frac{\partial f^1}{\partial x_j} \\ \vdots \\ \frac{\partial f^n}{\partial x_j}\end{pmatrix} = J_f(p)\,\boldsymbol{v}$$
+$$df_p(\boldsymbol{v}) = df_p\!\left(\sum_j v_j \boldsymbol{e}_j\right) = \sum_j v_j\,df_p(\boldsymbol{e}_j) = \sum_j v_j \begin{pmatrix}\frac{\partial f^1}{\partial x_j} \\\\ \vdots \\\\ \frac{\partial f^n}{\partial x_j}\end{pmatrix} = J_f(p)\,\boldsymbol{v}$$
 
 或者写成大家熟悉的微分形式 $d\boldsymbol{y} = J_f(p)\,d\boldsymbol{x}$。
 
