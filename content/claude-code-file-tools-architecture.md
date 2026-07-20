@@ -97,7 +97,7 @@ flowchart LR
 
 ---
 
-## 一、从 buildTool 说起：工具的构造元
+## 1. 从 buildTool 说起：工具的构造元
 
 所有文件工具的起点不是 `class extends Tool`，而是 `buildTool` 工厂函数。它用 TypeScript 的 `satisfies` 运算符做编译期约束——你必须提供正确的字段，但不必提供全部：
 
@@ -114,7 +114,7 @@ export const FileReadTool = buildTool({
 
 **`satisfies` vs `implements`**：`satisfies` 检查类型兼容但不改变推断类型，这意味着工具的返回类型保持精确的判别联合（discriminated union），下游代码可以直接 `switch(data.type)` 而不必做类型断言。如果用 `implements`，返回类型会被展平为基类接口，丧失穷尽性检查。
 
-## 二、validateInput：纯计算的前置守卫
+## 2. validateInput：纯计算的前置守卫
 
 `validateInput` 在权限检查之前执行，且承诺**不做 I/O**（除了 UNC 路径提前返回和文件存在性检查）。这是一个关键设计：I/O 操作在权限检查之前是危险的——用户还没同意，你就不能碰磁盘。
 
@@ -190,7 +190,7 @@ if (!readTimestamp || readTimestamp.isPartialView) {
 
 **`isPartialView` 标志**：如果上次读取只读了文件的一部分（指定了 offset/limit），`isPartialView` 为 true，此时不允许编辑——因为你没看到文件全貌，盲目编辑可能破坏未读部分的内容。
 
-## 三、权限校验：8 步流水线的完整实现
+## 3. 权限校验：8 步流水线的完整实现
 
 `checkReadPermissionForTool`（`filesystem.ts` 第 1030 行）和 `checkWritePermissionForTool`（第 1205 行）是整个权限体系的入口。
 
@@ -293,7 +293,7 @@ checkEditableInternalPath(absolutePath, input) {
 
 这些路径在 `.claude/` 目录下，按正常流程会被 `DANGEROUS_DIRECTORIES` 拦截。豁免逻辑必须在安全检查之前执行（代码注释："This MUST come before isDangerousFilePathToAutoEdit check since .claude is a dangerous directory"）。
 
-## 四、Symlink 链追踪：40 层深度防御
+## 4. Symlink 链追踪：40 层深度防御
 
 `getPathsForPermissionCheck`（`fsOperations.ts` 第 288 行）是权限系统最核心的辅助函数。它追踪整个 symlink 链，将**原始路径、中间目标和最终解析路径**全部纳入权限检查集合：
 
@@ -354,7 +354,7 @@ export function getPathsForPermissionCheck(inputPath: string): string[] {
 
 **性能优化**：`pathsToCheck` 在 `checkReadPermissionForTool` 中计算一次，通过参数传递给 `checkWritePermissionForTool`（第 5 步调用），避免重复的 `existsSync/lstatSync/realpathSync` 调用。注释记录：优化前每次 Read 权限检查触发 30 次 syscall（6 倍冗余）。
 
-## 五、文件读取双路径：从快速到流式
+## 5. 文件读取双路径：从快速到流式
 
 `readFileInRange.ts` 根据文件大小选择两条完全不同的代码路径：
 
@@ -459,7 +459,7 @@ function streamOnData(this: StreamState, chunk: string): void {
 
 截断模式不抛异常，而是在最后一个完整行处截断。这个模式不在普通读取中暴露，但为内部逻辑提供了更优雅的溢出处理。
 
-## 六、内容双重限制：大小 vs Token
+## 6. 内容双重限制：大小 vs Token
 
 `limits.ts` 定义了两层独立的限制：
 
@@ -496,7 +496,7 @@ env var CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS
 
 `memoize` 包装确保 GrowthBook 值在首次调用时固定——避免 feature flag 刷新导致会话中途限额变化。
 
-## 七、文件编辑的原子性：四层防护
+## 7. 文件编辑的原子性：四层防护
 
 ### 第一层：先读后写强制
 
@@ -564,7 +564,7 @@ if (fileHistoryEnabled()) {
 
 备份在临界区之前执行，是幂等的（v1 备份按内容 hash 去重）。即使后续的 mtime 检查失败，备份也只是多了一份未使用的副本，不会破坏状态。
 
-## 八、read_file 的 dedup 机制：省 18% 的重复读取
+## 8. read_file 的 dedup 机制：省 18% 的重复读取
 
 ```typescript
 const existingState = readFileState.get(fullFilePath)
@@ -594,7 +594,7 @@ if (existingState && !existingState.isPartialView && existingState.offset !== un
 
 **killswitch**：通过 GrowthBook feature flag `tengu_read_dedup_killswitch` 可以全局禁用 dedup，防止 stub 消息在外部模型中造成混淆。
 
-## 九、macOS 截图路径的特殊处理
+## 9. macOS 截图路径的特殊处理
 
 ```typescript
 const THIN_SPACE = String.fromCharCode(8239)  // U+202F 窄不换行空格
@@ -616,7 +616,7 @@ function getAlternateScreenshotPath(filePath: string): string | undefined {
 
 某些 macOS 版本在截图文件名中 AM/PM 前使用窄不换行空格（U+202F）而非普通空格。当文件找不到时，`callInner` 会先尝试替换空格字符再重试。这是一个典型的**平台兼容性 hack**，但体现了 Claude Code 对用户体验的关注——"我读了截图"不应该因为一个不可见字符而失败。
 
-## 十、图片读取的 Token 预算压缩
+## 10. 图片读取的 Token 预算压缩
 
 ```typescript
 export async function readImageWithTokenBudget(filePath, maxTokens, maxBytes) {
@@ -643,7 +643,7 @@ export async function readImageWithTokenBudget(filePath, maxTokens, maxBytes) {
 
 **三级压缩策略**：标准缩放 → 激进压缩 → fallback（sharp 直接缩到 400x400 JPEG quality:20）。每一级都从同一个 `imageBuffer` 操作，避免重复 I/O。
 
-## 十一、引号归一化：LLM 的排版盲区
+## 11. 引号归一化：LLM 的排版盲区
 
 ```typescript
 export function findActualString(fileContent, searchString): string | null {
@@ -672,7 +672,7 @@ export function preserveQuoteStyle(oldString, actualOldString, newString) {
 
 这是一个**LLM 对齐 hack**——不改变模型行为，而是在应用层修正模型无法控制的排版差异。
 
-## 十二、expandPath：路径规范化的五步处理
+## 12. expandPath：路径规范化的五步处理
 
 ```typescript
 export function expandPath(path: string, baseDir?: string): string {
@@ -703,7 +703,7 @@ export function expandPath(path: string, baseDir?: string): string {
 
 **null byte 检查**：`\0` 在 C 字符串中是终止符。`foo\0/etc/passwd` 在 C 层面被截断为 `foo`，但 JavaScript 层面看到的是完整字符串。这个检查防止通过 null byte 注入绕过路径安全检查。
 
-## 十三、反直觉的设计决策
+## 13. 反直觉的设计决策
 
 ### 1. maxResultSizeChars: Infinity
 

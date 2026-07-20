@@ -8,7 +8,7 @@ math: false
 diagram: true
 ---
 
-## 一、整体架构概览
+## 1. 整体架构概览
 
 Claude Code 是一个基于终端的 AI 编程助手，采用**管道模型**：
 
@@ -51,7 +51,7 @@ src/
 └── server/              # Web 服务器
 ```
 
-## 二、QueryEngine 详解
+## 2. QueryEngine 详解
 
 ### 2.1 核心定位
 
@@ -287,7 +287,7 @@ export type QueryEngineConfig = {
 }
 ```
 
-## 三、三层架构：Agent / Session / Query
+## 3. 三层架构：Agent / Session / Query
 
 Claude Code 的会话模型分为三层：
 
@@ -369,7 +369,7 @@ Query 是**单次 LLM 调用的完整生命周期**：
 - 管理 Token 使用和预算
 - 处理错误和恢复
 
-## 四、工具系统
+## 4. 工具系统
 
 ### 4.1 工具定义
 
@@ -398,7 +398,7 @@ export async function* runTools(
 ): AsyncGenerator<ToolUpdate>
 ```
 
-## 五、MCP (Model Context Protocol)
+## 5. MCP (Model Context Protocol)
 
 Claude Code 同时是 **MCP Client** 和 **MCP Server**：
 
@@ -437,7 +437,7 @@ export async function startMcpServer() {
 }
 ```
 
-## 六、权限系统
+## 6. 权限系统
 
 Claude Code 实现了**集中式权限管理**：
 
@@ -454,7 +454,7 @@ Bash(git *)           // 允许所有 git 命令
 FileEdit(/src/*)      // 允许编辑 src 目录
 ```
 
-## 七、状态管理
+## 7. 状态管理
 
 使用 **React Context + 自定义 Store** 模式：
 
@@ -473,7 +473,7 @@ export const NotificationContext = createContext<NotificationContext>(null)
 export const OverlayContext = createContext<OverlayContext>(null)
 ```
 
-## 八、构建系统
+## 8. 构建系统
 
 ### 8.1 特性开关 (Dead Code Elimination)
 
