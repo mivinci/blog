@@ -6,7 +6,6 @@ tags: ["物理", "相对论", "哲学"]
 draft: false
 math: true
 diagram: false
-original: true
 ---
 
 ## 先说为什么写这个
